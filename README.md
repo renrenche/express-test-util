@@ -1,4 +1,4 @@
-# express-test-util [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# express-test-util
 > test utils for express middlewares
 
 ## Installation
@@ -10,18 +10,30 @@ $ npm install --save express-test-util
 ## Usage
 
 ```js
-var expressTestUtil = require('express-test-util');
+const config = require('config');
+const expect = require('chai').expect;
+const util = require('express-test-util');
 
-expressTestUtil('Rainbow');
+const middleware = require(/path/to/middleware);
+describe('#default', function () {
+    it('should use req.param.city when exists', function (done) {
+        const req = util.mockRequest({ params: { city: 'bj' }, props: { cityList } });
+        const res = util.mockResponse();
+
+        mw(req, res, function (err) {
+            if (err) {
+                return done(err);
+            }
+
+            expect(req.cityInfo).to.deep.equal(cityList.bj);
+            expect(res.cookies[cityinfo.COOKIE_RECORD_CITY]).to.deep.equal({ value: 'bj', options: config.cookie });
+            done();
+        });
+    });
+
+});
 ```
 ## License
 
-Apache-2.0 © [wangshijun]()
+Apache-2.0 © [wangshijun](wangshijun@renrenche.com)
 
-
-[npm-image]: https://badge.fury.io/js/express-test-util.svg
-[npm-url]: https://npmjs.org/package/express-test-util
-[travis-image]: https://travis-ci.org//express-test-util.svg?branch=master
-[travis-url]: https://travis-ci.org//express-test-util
-[daviddm-image]: https://david-dm.org//express-test-util.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org//express-test-util
