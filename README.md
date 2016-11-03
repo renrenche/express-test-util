@@ -1,5 +1,5 @@
 # express-test-util
-> test utils for express middlewares
+> test utils for express middlewares (which must call next)
 
 ## Installation
 
@@ -14,19 +14,23 @@ const config = require('config');
 const expect = require('chai').expect;
 const util = require('express-test-util');
 
-const middleware = require(/path/to/middleware);
+const middleware = function (req, res, next) {
+    res.cookie('key', 'value');
+    next();
+};
+
 describe('#default', function () {
     it('should use req.param.city when exists', function (done) {
         const req = util.mockRequest({ params: { city: 'bj' }, props: { cityList } });
         const res = util.mockResponse();
 
-        mw(req, res, function (err) {
+        middleware(req, res, function (err) {
             if (err) {
                 return done(err);
             }
 
-            expect(req.cityInfo).to.deep.equal(cityList.bj);
-            expect(res.cookies[cityinfo.COOKIE_RECORD_CITY]).to.deep.equal({ value: 'bj', options: config.cookie });
+            expect(req.param('city')).to.equal('bj');
+            expect(res.cookies.key).to.deep.equal({ value: 'bj', options: {} });
             done();
         });
     });
