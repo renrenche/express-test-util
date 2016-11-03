@@ -1,6 +1,6 @@
 {
   "name": "express-test-util",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "test utils for express middlewares",
   "homepage": "",
   "author": {
