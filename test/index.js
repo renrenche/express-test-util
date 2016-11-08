@@ -69,6 +69,7 @@ describe('#mockRequest', function () {
         expect(res.status).to.be.a('function');
         expect(res.send).to.be.a('function');
         expect(res.cookie).to.be.a('function');
+        expect(res.redirect).to.be.a('function');
     });
 
     it('should `res.cookie` behave as expected', function () {
@@ -79,5 +80,32 @@ describe('#mockRequest', function () {
 
         res.cookie('key', 'value');
         expect(res.cookies.key.value).to.equal('value');
+    });
+
+    it('should `res.status` behave as expected', function () {
+        const res = util.mockResponse();
+
+        expect(res).to.be.a('object');
+
+        res.status(200);
+        expect(res.status).to.equal(200);
+    });
+
+    it('should `res.send` behave as expected', function () {
+        const res = util.mockResponse();
+
+        expect(res).to.be.a('object');
+
+        res.send('test');
+        expect(res.body).to.equal('test');
+    });
+
+    it('should `res.redirect` behave as expected', function () {
+        const res = util.mockResponse();
+
+        expect(res).to.be.a('object');
+
+        res.redirect('http://www.baidu.com');
+        expect(res.redirectUrl).to.equal('http://www.baidu.com');
     });
 });
