@@ -108,4 +108,13 @@ describe('#mockRequest', function () {
         res.redirect('http://www.baidu.com');
         expect(res.redirectUrl).to.equal('http://www.baidu.com');
     });
+
+    it('should `res.redirect` behave as expected', function () {
+        const res = util.mockResponse();
+
+        expect(res).to.be.a('object');
+
+        res.jsonp({ status: 0 });
+        expect(res.jsonp).to.deep.equal({ status: 0 });
+    });
 });
