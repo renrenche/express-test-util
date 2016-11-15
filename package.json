@@ -2,11 +2,11 @@
   "name": "express-test-util",
   "version": "1.1.4",
   "description": "test utils for express middlewares",
-  "homepage": "",
+  "homepage": "https://github.com/renrenche/express-test-util",
   "author": {
     "name": "wangshijun",
     "email": "wangshijun@renrenche.com",
-    "url": ""
+    "url": "https://github.com/wangshijun"
   },
   "files": [
     "lib"
@@ -40,7 +40,7 @@
       "mocha": true
     }
   },
-  "repository": "git@gitlab.renrenche.com:fe/test-util.git",
+  "repository": "https://github.com/renrenche/express-test-util.git",
   "scripts": {
     "dev": "node_modules/.bin/mocha -w test",
     "prepublish": "gulp prepublish",
