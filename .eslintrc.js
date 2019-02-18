@@ -29,5 +29,6 @@ module.exports = {
         // 不强制链式操作另起一行
         'newline-per-chained-call': ['off'],
         'no-unused-expressions': ['off'],
+        'no-var': ['off'],
     },
 };
