@@ -20,7 +20,7 @@ describe('#mockRequest', function () {
         expect(req.get).to.be.a('function');
     });
 
-    it('should `req` have custome properties', function () {
+    it('should `req` have custom properties', function () {
         const req = util.mockRequest({
             props: { xxx: 'xxx' },
         });
@@ -56,9 +56,9 @@ describe('#mockRequest', function () {
     });
 });
 
-describe('#mockRequest', function () {
-    it('should have mockRequest method', function () {
-        expect(util.mockRequest).to.be.a('function');
+describe('#mockResponse', function () {
+    it('should have mockResponse method', function () {
+        expect(util.mockResponse).to.be.a('function');
     });
 
     it('should `res` have standard properties', function () {
@@ -75,7 +75,6 @@ describe('#mockRequest', function () {
     it('should `res.cookie` behave as expected', function () {
         const res = util.mockResponse();
 
-        expect(res).to.be.a('object');
         expect(res.cookies).to.be.a('object');
 
         res.cookie('key', 'value');
@@ -85,16 +84,12 @@ describe('#mockRequest', function () {
     it('should `res.status` behave as expected', function () {
         const res = util.mockResponse();
 
-        expect(res).to.be.a('object');
-
         res.status(200);
         expect(res.status).to.equal(200);
     });
 
     it('should `res.send` behave as expected', function () {
         const res = util.mockResponse();
-
-        expect(res).to.be.a('object');
 
         res.send('test');
         expect(res.body).to.equal('test');
@@ -103,16 +98,12 @@ describe('#mockRequest', function () {
     it('should `res.redirect` behave as expected', function () {
         const res = util.mockResponse();
 
-        expect(res).to.be.a('object');
-
         res.redirect('http://www.baidu.com');
         expect(res.redirectUrl).to.equal('http://www.baidu.com');
     });
 
-    it('should `res.redirect` behave as expected', function () {
+    it('should `res.jsonp` behave as expected', function () {
         const res = util.mockResponse();
-
-        expect(res).to.be.a('object');
 
         res.jsonp({ status: 0 });
         expect(res.jsonp).to.deep.equal({ status: 0 });
